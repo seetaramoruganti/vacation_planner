@@ -7,11 +7,16 @@ import DeleteConfirmation from "./components/DeleteConfirmation.jsx";
 import logoImg from "./assets/logo.png";
 import { sortPlacesByDistance } from "./loc.js";
 
+const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+const storedPlaces = storedIds.map((id) =>
+  AVAILABLE_PLACES.find((place) => place.id === id)
+);
+
 function App() {
   const modal = useRef();
   const selectedPlace = useRef();
   const [availablePlaces, setAvailablePlaces] = useState(AVAILABLE_PLACES);
-  const [pickedPlaces, setPickedPlaces] = useState([]);
+  const [pickedPlaces, setPickedPlaces] = useState(storedPlaces);
 
   // Using useEffect to avoid infinte re rendering of component
   useEffect(() => {
@@ -29,7 +34,7 @@ function App() {
   //  without using useEffect ------ Infinte Looping inssue
   // navigator.geolocation.getCurrentPosition((position) => {
   //   console.log(position.coords.latitude, position.coords.longitude);
-  // Logs show the number times location is fetched i.e., means the component is rendered after every fetch
+  //   // Logs show the number times location is fetched i.e., means the component is rendered after every fetch
   //   const nearPlaces = sortPlacesByDistance(
   //     AVAILABLE_PLACES,
   //     position.coords.latitude,
@@ -55,6 +60,13 @@ function App() {
       const place = AVAILABLE_PLACES.find((place) => place.id === id);
       return [place, ...prevPickedPlaces];
     });
+    const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+    if (storedIds.indexOf(id) === -1) {
+      localStorage.setItem(
+        "selectedPlaces",
+        JSON.stringify([id, ...storedIds])
+      );
+    }
   }
 
   function handleRemovePlace() {
