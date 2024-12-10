@@ -62,16 +62,6 @@ PlacePicker is an interactive web application built with React.js that allows us
 
 ---
 
-## Screenshots
-
-### Homepage:
-
-The homepage displays a variety of visually appealing destinations available for selection.
-
-![PlacePicker Main Page](./infinte%20looping%20example.png)
-
----
-
 ## How to Run Locally
 
 1. Clone the repository:
