@@ -1,8 +1,8 @@
-# PlacePicker 🌎
+# Vacation Planner 🌎
 
 PlacePicker is an interactive web application built with React.js that allows users to create and manage a personal collection of places they would like to visit or have visited. Users can select places, save their selections to local storage, and manage them seamlessly.
 
-![PlacePicker Screenshot](screenshots/infinte looping example.png)
+![Vacation Planner Screenshot](screenshots/infinte_looping_example.png)
 
 ## Features
 
